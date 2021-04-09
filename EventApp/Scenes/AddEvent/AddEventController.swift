@@ -13,6 +13,8 @@ class AddEventController: UIViewController {
     @IBOutlet private(set) var eventImageView: UIImageView!
     @IBOutlet private(set) var eventTitleTextField: UITextField!
     
+    private var imagePicker = UIImagePickerController()
+    
     private var selectedImage: UIImage?
     private var selectedDate: Date?
     
@@ -20,12 +22,20 @@ class AddEventController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupImagePicker()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         viewModel.dismissAddEventScene()
+    }
+    
+    private func setupImagePicker() {
+        imagePicker.delegate = self
+        imagePicker.sourceType = .savedPhotosAlbum
+        imagePicker.allowsEditing = false
     }
     
     private func showDatePicker() {
@@ -62,6 +72,9 @@ extension AddEventController {
     
     @IBAction
     func onSelectImageTapped(_ sender: Any) {
+        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) {
+            present(imagePicker, animated: true, completion: nil)
+        }
     }
     
     @IBAction
@@ -80,4 +93,19 @@ extension AddEventController {
         viewModel.saveEvent(title: title, date: date, image: image)
     }
     
+}
+
+extension AddEventController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        guard let image = info[.originalImage] as? UIImage else {
+            self.dismiss(animated: true)
+            return
+        }
+        
+        selectedImage = image
+        eventImageView.image = image
+        self.dismiss(animated: true)
+    }
 }
