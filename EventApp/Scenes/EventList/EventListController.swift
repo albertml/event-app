@@ -20,6 +20,12 @@ class EventListController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupNavigationViews()
+//        viewModel.saveEvent(name: "New York", date: Date(), image: UIImage(named: "new-york")!)
+//        debugPrint(viewModel.fetchEvents())
+    }
+    
+    private func setupNavigationViews() {
         let image = UIImage(systemName: "plus.circle.fill")
         let barButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(onAddEventTapped))
         barButtonItem.tintColor = .primary
