@@ -8,12 +8,6 @@
 import UIKit
 
 class AddEventController: UIViewController {
-
-    static func instantiate() -> AddEventController {
-        let storyBoard = UIStoryboard(name: "Main", bundle: .main)
-        let controller = storyBoard.instantiateViewController(identifier: "AddEventController") as! AddEventController
-        return controller
-    }
     
     var viewModel: AddEventProtocol!
     

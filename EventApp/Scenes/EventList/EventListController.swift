@@ -8,12 +8,6 @@
 import UIKit
 
 class EventListController: UIViewController {
-
-    static func instantiate() -> EventListController {
-        let storyBoard = UIStoryboard(name: "Main", bundle: .main)
-        let controller = storyBoard.instantiateViewController(identifier: "EventListController") as! EventListController
-        return controller
-    }
     
     var viewModel: EventListProtocol!
     
@@ -30,7 +24,7 @@ class EventListController: UIViewController {
         let barButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(onAddEventTapped))
         barButtonItem.tintColor = .primary
         navigationItem.rightBarButtonItem = barButtonItem
-        navigationItem.title = "Events"
+        navigationItem.title = viewModel.title
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     

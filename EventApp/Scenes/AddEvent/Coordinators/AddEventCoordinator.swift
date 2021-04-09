@@ -21,20 +21,25 @@ final class AddEventCoordinator: Coordinator {
     }
     
     func start() {
-        let addEventController = AddEventController.instantiate()
+        let addEventController: AddEventController = .instantiate()
         let addEventViewModel = AddEventViewModel()
         addEventViewModel.addEventCoordinatorResult = handleAddEventCoordinatorResult()
         addEventController.viewModel = addEventViewModel
         self.navigationController.present(addEventController, animated: true)
     }
+    
+    deinit {
+        debugPrint("AddEventCoordinator deallocated")
+    }
 }
 
 extension AddEventCoordinator {
     private func handleAddEventCoordinatorResult() -> ((AddEventCoordinatorResult) -> ()) {
-        return { result in
+        return { [weak self] result in
+            guard let s = self else { return }
             switch result {
             case .dismiss:
-                self.handleEventListCoordinatorResult?(.dismiss)
+                s.handleEventListCoordinatorResult?(.dismiss(s))
             }
         }
     }
