@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		BDC18361261FF98F00CDF13D /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC18360261FF98F00CDF13D /* AppCoordinator.swift */; };
+		BDC18365261FFC6C00CDF13D /* EventListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC18364261FFC6C00CDF13D /* EventListCoordinator.swift */; };
+		BDC18369261FFD6E00CDF13D /* EventListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC18368261FFD6E00CDF13D /* EventListController.swift */; };
 		BDCB4AF9261FF6920040C363 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCB4AF8261FF6920040C363 /* AppDelegate.swift */; };
 		BDCB4AFB261FF6920040C363 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCB4AFA261FF6920040C363 /* SceneDelegate.swift */; };
 		BDCB4AFD261FF6920040C363 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCB4AFC261FF6920040C363 /* ViewController.swift */; };
@@ -18,6 +20,8 @@
 
 /* Begin PBXFileReference section */
 		BDC18360261FF98F00CDF13D /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		BDC18364261FFC6C00CDF13D /* EventListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListCoordinator.swift; sourceTree = "<group>"; };
+		BDC18368261FFD6E00CDF13D /* EventListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListController.swift; sourceTree = "<group>"; };
 		BDCB4AF5261FF6920040C363 /* EventApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EventApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDCB4AF8261FF6920040C363 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BDCB4AFA261FF6920040C363 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,8 +47,17 @@
 			isa = PBXGroup;
 			children = (
 				BDC18360261FF98F00CDF13D /* AppCoordinator.swift */,
+				BDC18364261FFC6C00CDF13D /* EventListCoordinator.swift */,
 			);
 			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		BDC18367261FFD4500CDF13D /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				BDC18368261FFD6E00CDF13D /* EventListController.swift */,
+			);
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 		BDCB4AEC261FF6920040C363 = {
@@ -66,6 +79,7 @@
 		BDCB4AF7261FF6920040C363 /* EventApp */ = {
 			isa = PBXGroup;
 			children = (
+				BDC18367261FFD4500CDF13D /* Scenes */,
 				BDC1835F261FF97600CDF13D /* Coordinators */,
 				BDCB4AF8261FF6920040C363 /* AppDelegate.swift */,
 				BDCB4AFA261FF6920040C363 /* SceneDelegate.swift */,
@@ -152,6 +166,8 @@
 				BDCB4AFD261FF6920040C363 /* ViewController.swift in Sources */,
 				BDCB4AF9261FF6920040C363 /* AppDelegate.swift in Sources */,
 				BDCB4AFB261FF6920040C363 /* SceneDelegate.swift in Sources */,
+				BDC18369261FFD6E00CDF13D /* EventListController.swift in Sources */,
+				BDC18365261FFC6C00CDF13D /* EventListCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
