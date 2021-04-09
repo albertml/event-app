@@ -18,4 +18,8 @@ final class AddEventViewModel: AddEventProtocol {
     func dismissAddEventScene() {
         addEventCoordinatorResult?(.dismiss)
     }
+    
+    deinit {
+        debugPrint("AddEventViewModel deallocated")
+    }
 }

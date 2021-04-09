@@ -8,7 +8,7 @@
 import UIKit
 
 enum EventListCoordinatorResult {
-    case dismiss
+    case dismiss(Coordinator)
 }
 
 final class EventListCoordinator: Coordinator {
@@ -20,7 +20,7 @@ final class EventListCoordinator: Coordinator {
     }
     
     func start() {
-        let eventListController = EventListController.instantiate()
+        let eventListController: EventListController = .instantiate()
         let eventListViewModel = EventListViewModel()
         eventListViewModel.eventListCoordinatorResult = handleEventListViewModelCoordinatorResult()
         eventListController.viewModel = eventListViewModel
@@ -37,10 +37,11 @@ final class EventListCoordinator: Coordinator {
 
 extension EventListCoordinator {
     func handleEventListViewModelCoordinatorResult() -> ((EventListViewModelCoordinatorResult) -> ()) {
-        return { result in
+        return { [weak self] result in
+            guard let s = self else { return }
             switch result {
             case .addEvent:
-                self.presentAddEventCoordinator()
+                s.presentAddEventCoordinator()
             case .viewEvent:
                 debugPrint("View Event")
             }
@@ -50,10 +51,17 @@ extension EventListCoordinator {
 
 extension EventListCoordinator {
     func handleEventListCoordinatorResult() -> ((EventListCoordinatorResult) -> ()) {
-        return { result in
+        return { [weak self] result in
+            guard let s = self else { return }
             switch result {
-            case .dismiss:
-                self.childCoordinators.removeLast()
+            case let .dismiss(dismissedCoordinator):
+                if let index = s.childCoordinators.firstIndex(where: { coordinator -> Bool in
+                    return coordinator === dismissedCoordinator
+                }) {
+//                    self.childCoordinators.removeLast()
+                    s.childCoordinators.remove(at: index)
+                }
+                
             }
         }
     }

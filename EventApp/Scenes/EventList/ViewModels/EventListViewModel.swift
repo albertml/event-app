@@ -9,6 +9,7 @@ import UIKit
 import CoreData
 
 protocol EventListProtocol {
+    var title: String { get }
     func saveEvent(name: String, date: Date, image: UIImage)
     func fetchEvents() -> [Event]
     
@@ -28,6 +29,17 @@ final class EventListViewModel: EventListProtocol {
     init(coreDataManager: CoreDateManager = CoreDateManager()) {
         self.coreDataManager = coreDataManager
     }
+    
+    deinit {
+        debugPrint("EventListViewModel deallocated")
+    }
+}
+
+
+// MARK: Getters
+
+extension EventListViewModel {
+    var title: String { "Events" }
 }
 
 
