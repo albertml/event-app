@@ -15,6 +15,8 @@ class EventListController: UIViewController {
         return controller
     }
     
+    var viewModel: EventListProtocol!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,6 +29,6 @@ class EventListController: UIViewController {
     }
     
     @objc private func onAddEventTapped() {
-        
+        viewModel.showAddEventScene()
     }
 }
