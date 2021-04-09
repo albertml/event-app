@@ -7,11 +7,11 @@
 
 import UIKit
 
-//extension UIViewController {
-//    
-//    static func instantiate() -> UIViewController {
-//        let storyBoard = UIStoryboard(name: "Main", bundle: .main)
-//        let controller = storyBoard.instantiateViewController(identifier: String(self)) as! Self
-//        return controller
-//    }
-//}
+extension UIViewController {
+    
+    static func instantiate<T>() -> T {
+        let storyBoard = UIStoryboard(name: "Main", bundle: .main)
+        let controller = storyBoard.instantiateViewController(identifier: "\(T.self)") as! T
+        return controller
+    }
+}
