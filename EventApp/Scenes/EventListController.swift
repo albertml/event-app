@@ -9,21 +9,24 @@ import UIKit
 
 class EventListController: UIViewController {
 
+    static func instantiate() -> EventListController {
+        let storyBoard = UIStoryboard(name: "Main", bundle: .main)
+        let controller = storyBoard.instantiateViewController(identifier: "EventListController") as! EventListController
+        return controller
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let image = UIImage(systemName: "plus.circle.fill")
+        let barButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(onAddEventTapped))
+        barButtonItem.tintColor = .primary
+        navigationItem.rightBarButtonItem = barButtonItem
+        navigationItem.title = "Events"
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc private func onAddEventTapped() {
+        
     }
-    */
-
 }
