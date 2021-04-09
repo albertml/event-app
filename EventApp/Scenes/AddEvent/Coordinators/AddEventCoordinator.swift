@@ -1,5 +1,5 @@
 //
-//  EventListCoordinator.swift
+//  AddEventCoordinator.swift
 //  EventApp
 //
 //  Created by Saski Skye on 4/9/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class EventListCoordinator: Coordinator {
+final class AddEventCoordinator: Coordinator {
     private(set) var childCoordinators: [Coordinator] = []
     private let navigationController: UINavigationController
     
@@ -16,8 +16,10 @@ final class EventListCoordinator: Coordinator {
     }
     
     func start() {
-        let eventListController = EventListController.instantiate()
-        navigationController.setViewControllers([eventListController], animated: false)
+        let addEventCoordinator = AddEventCoordinator(navigationController: navigationController)
+        
+        childCoordinators.append(addEventCoordinator)
+        addEventCoordinator.start()
     }
     
     
