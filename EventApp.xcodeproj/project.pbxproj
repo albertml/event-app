@@ -23,6 +23,7 @@
 		BDCB4B00261FF6920040C363 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDCB4AFE261FF6920040C363 /* Main.storyboard */; };
 		BDCB4B02261FF6930040C363 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDCB4B01261FF6930040C363 /* Assets.xcassets */; };
 		BDCB4B05261FF6930040C363 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDCB4B03261FF6930040C363 /* LaunchScreen.storyboard */; };
+		BDDACDC72621F0340069DEED /* ImagePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDACDC62621F0340069DEED /* ImagePickerCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		BDCB4B01261FF6930040C363 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BDCB4B04261FF6930040C363 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BDCB4B06261FF6930040C363 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BDDACDC62621F0340069DEED /* ImagePickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				BD9EB1012620055F00D28DF6 /* AddEventCoordinator.swift */,
+				BDDACDC62621F0340069DEED /* ImagePickerCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 				BDC18369261FFD6E00CDF13D /* EventListController.swift in Sources */,
 				BDC18365261FFC6C00CDF13D /* EventListCoordinator.swift in Sources */,
 				BDB265112620455000617207 /* EventApp.xcdatamodeld in Sources */,
+				BDDACDC72621F0340069DEED /* ImagePickerCoordinator.swift in Sources */,
 				BD9EB1162620094200D28DF6 /* EventListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
