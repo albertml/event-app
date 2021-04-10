@@ -15,8 +15,7 @@ class EventListController: UIViewController {
         super.viewDidLoad()
 
         setupNavigationViews()
-//        viewModel.saveEvent(name: "New York", date: Date(), image: UIImage(named: "new-york")!)
-//        debugPrint(viewModel.fetchEvents())
+        debugPrint(viewModel.fetchEvents())
     }
     
     private func setupNavigationViews() {
