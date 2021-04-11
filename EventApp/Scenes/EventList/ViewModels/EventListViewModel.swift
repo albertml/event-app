@@ -17,7 +17,7 @@ protocol EventListProtocol {
     func fetchEvents()
     
     func showAddEventScene()
-    func viewEventScene()
+    func viewEventScene(event: Event)
 }
 
 enum EventListViewModelResult {
@@ -25,7 +25,7 @@ enum EventListViewModelResult {
 }
 
 enum EventListViewModelCoordinatorResult {
-    case addEvent, viewEvent
+    case addEvent, viewEvent(Event)
 }
 
 final class EventListViewModel: EventListProtocol {
@@ -77,7 +77,7 @@ extension EventListViewModel {
         eventListCoordinatorResult?(.addEvent)
     }
     
-    func viewEventScene() {
-        eventListCoordinatorResult?(.viewEvent)
+    func viewEventScene(event: Event) {
+        eventListCoordinatorResult?(.viewEvent(event))
     }
 }

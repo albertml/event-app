@@ -15,6 +15,7 @@ protocol EditEventProtocol {
     func dismissAddEventScene()
     func saveEvent(title: String, date: Date, image: UIImage)
     func browseImage()
+    func setupData()
 }
 
 enum EditEventViewModelResult {
@@ -41,10 +42,6 @@ final class EditEventViewModel: EditEventProtocol {
     init(coreDataManager: CoreDateManager = CoreDateManager(), event: Event) {
         self.coreDataManager = coreDataManager
         self.event = event
-        
-        handleEditEventViewModelResult?(.eventName(eventTitle))
-        handleEditEventViewModelResult?(.eventDate(eventDate))
-        handleEditEventViewModelResult?(.eventImage(eventImage))
     }
     
     deinit {
@@ -71,6 +68,12 @@ extension EditEventViewModel {
     
     func browseImage() {
         addEventCoordinatorResult?(.imagePicker)
+    }
+    
+    func setupData() {
+        handleEditEventViewModelResult?(.eventName(eventTitle))
+        handleEditEventViewModelResult?(.eventDate(eventDate))
+        handleEditEventViewModelResult?(.eventImage(eventImage))
     }
 }
 

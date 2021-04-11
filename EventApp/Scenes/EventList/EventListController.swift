@@ -91,6 +91,12 @@ extension EventListController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension EventListController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedEvent = viewModel.eventsCellViewModel[indexPath.row].selectedEvent
+        viewModel.viewEventScene(event: selectedEvent)
+    }
+    
     func tableView(
         _ tableView: UITableView,
         heightForRowAt indexPath: IndexPath

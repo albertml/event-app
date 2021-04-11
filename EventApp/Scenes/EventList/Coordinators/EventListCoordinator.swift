@@ -33,6 +33,13 @@ final class EventListCoordinator: Coordinator {
         childCoordinators.append(addEventCoordinator)
         addEventCoordinator.start()
     }
+    
+    private func presetEditEventCoordinator(event: Event) {
+        let editEventCoordinator = EditEventCoordinator(navigationController: navigationController, event: event)
+        editEventCoordinator.handleEventListCoordinatorResult = handleEventListCoordinatorResult()
+        childCoordinators.append(editEventCoordinator)
+        editEventCoordinator.start()
+    }
 }
 
 extension EventListCoordinator {
@@ -42,8 +49,8 @@ extension EventListCoordinator {
             switch result {
             case .addEvent:
                 s.presentAddEventCoordinator()
-            case .viewEvent:
-                debugPrint("View Event")
+            case .viewEvent(let event):
+                s.presetEditEventCoordinator(event: event)
             }
         }
     }
@@ -58,7 +65,6 @@ extension EventListCoordinator {
                 if let index = s.childCoordinators.firstIndex(where: { coordinator -> Bool in
                     return coordinator === dismissedCoordinator
                 }) {
-//                    self.childCoordinators.removeLast()
                     s.childCoordinators.remove(at: index)
                     s.eventListViewModel.fetchEvents()
                 }

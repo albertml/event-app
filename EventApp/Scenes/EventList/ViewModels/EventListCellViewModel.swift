@@ -11,6 +11,7 @@ protocol EventListCellProtocol {
     var eventImage: UIImage { get }
     var eventTitle: String { get }
     var eventDate: String { get }
+    var selectedEvent: Event { get }
     
     func loadImage(completion: @escaping ((UIImage?) -> ()))
 }
@@ -74,4 +75,6 @@ extension EventListCellViewModel {
         guard let date = event.date else { return "" }
         return dateFormatter.string(from: date)
     }
+    
+    var selectedEvent: Event { event }
 }

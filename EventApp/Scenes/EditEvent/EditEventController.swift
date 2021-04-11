@@ -24,6 +24,7 @@ class EditEventController: UIViewController {
         super.viewDidLoad()
         
         viewModel.handleEditEventViewModelResult = handleEditEventViewModelResult()
+        viewModel.setupData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
