@@ -13,6 +13,18 @@ class EventsListTableViewCell: UITableViewCell {
     @IBOutlet weak var eventsImageView: UIImageView!
     @IBOutlet weak var eventsNameLabel: UILabel!
     
+    var viewModel: EventListCellProtocol! {
+        didSet {
+            configure()
+        }
+    }
+    
+    private func configure() {
+        eventsImageView.image = viewModel.eventImage
+        eventsNameLabel.text = viewModel.eventTitle
+        eventsDateLabel.text = viewModel.eventDate
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

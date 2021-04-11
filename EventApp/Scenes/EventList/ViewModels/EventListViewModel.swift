@@ -10,11 +10,18 @@ import CoreData
 
 protocol EventListProtocol {
     var title: String { get }
+    var eventsCellViewModel: [EventListCellViewModel] { get set }
+    var eventListViewModelResult: ((EventListViewModelResult) -> ())? { get set }
+    
     func saveEvent(name: String, date: Date, image: UIImage)
-    func fetchEvents() -> [Event]
+    func fetchEvents()
     
     func showAddEventScene()
     func viewEventScene()
+}
+
+enum EventListViewModelResult {
+    case refresh
 }
 
 enum EventListViewModelCoordinatorResult {
@@ -24,7 +31,10 @@ enum EventListViewModelCoordinatorResult {
 final class EventListViewModel: EventListProtocol {
     
     var eventListCoordinatorResult: ((EventListViewModelCoordinatorResult) -> ())?
+    var eventListViewModelResult: ((EventListViewModelResult) -> ())?
+    
     private let coreDataManager: CoreDateManager
+    var eventsCellViewModel: [EventListCellViewModel] = []
     
     init(coreDataManager: CoreDateManager = CoreDateManager()) {
         self.coreDataManager = coreDataManager
@@ -49,8 +59,13 @@ extension EventListViewModel {
         coreDataManager.saveEvent(name: name, date: date, image: image)
     }
     
-    func fetchEvents() -> [Event] {
-        coreDataManager.fetchEvents()
+    func fetchEvents() {
+        let eventsCellViewModel = coreDataManager.fetchEvents().compactMap {
+            EventListCellViewModel(event: $0)
+        }
+        
+        self.eventsCellViewModel = eventsCellViewModel
+        eventListViewModelResult?(.refresh)
     }
 }
 

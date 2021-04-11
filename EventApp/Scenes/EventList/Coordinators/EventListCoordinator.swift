@@ -14,6 +14,7 @@ enum EventListCoordinatorResult {
 final class EventListCoordinator: Coordinator {
     private(set) var childCoordinators: [Coordinator] = []
     private let navigationController: UINavigationController
+    private let eventListViewModel = EventListViewModel()
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -21,7 +22,6 @@ final class EventListCoordinator: Coordinator {
     
     func start() {
         let eventListController: EventListController = .instantiate()
-        let eventListViewModel = EventListViewModel()
         eventListViewModel.eventListCoordinatorResult = handleEventListViewModelCoordinatorResult()
         eventListController.viewModel = eventListViewModel
         navigationController.setViewControllers([eventListController], animated: false)
@@ -60,6 +60,7 @@ extension EventListCoordinator {
                 }) {
 //                    self.childCoordinators.removeLast()
                     s.childCoordinators.remove(at: index)
+                    s.eventListViewModel.fetchEvents()
                 }
                 
             }

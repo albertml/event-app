@@ -71,7 +71,7 @@ extension EventListController: UITableViewDataSource {
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        viewModel.events.count
+        viewModel.eventsCellViewModel.count
     }
     
     func tableView(
@@ -82,6 +82,7 @@ extension EventListController: UITableViewDataSource {
             return UITableViewCell()
         }
         
+        eventCell.viewModel = viewModel.eventsCellViewModel[indexPath.row]
         return eventCell
     }
 }
