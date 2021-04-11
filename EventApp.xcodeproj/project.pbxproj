@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD193F6D2622D32300FB0FF3 /* EventsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD193F6B2622D32300FB0FF3 /* EventsListTableViewCell.swift */; };
+		BD193F6E2622D32300FB0FF3 /* EventsListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD193F6C2622D32300FB0FF3 /* EventsListTableViewCell.xib */; };
 		BD9EB1022620055F00D28DF6 /* AddEventCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EB1012620055F00D28DF6 /* AddEventCoordinator.swift */; };
 		BD9EB1072620067400D28DF6 /* AddEventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EB1062620067400D28DF6 /* AddEventController.swift */; };
 		BD9EB10B262006DA00D28DF6 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9EB10A262006DA00D28DF6 /* UIViewController+Extensions.swift */; };
@@ -27,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BD193F6B2622D32300FB0FF3 /* EventsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsListTableViewCell.swift; sourceTree = "<group>"; };
+		BD193F6C2622D32300FB0FF3 /* EventsListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventsListTableViewCell.xib; sourceTree = "<group>"; };
 		BD9EB1012620055F00D28DF6 /* AddEventCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventCoordinator.swift; sourceTree = "<group>"; };
 		BD9EB1062620067400D28DF6 /* AddEventController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventController.swift; sourceTree = "<group>"; };
 		BD9EB10A262006DA00D28DF6 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
@@ -59,6 +63,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BD193F6A2622D2FB00FB0FF3 /* ReusableCells */ = {
+			isa = PBXGroup;
+			children = (
+				BD193F6B2622D32300FB0FF3 /* EventsListTableViewCell.swift */,
+				BD193F6C2622D32300FB0FF3 /* EventsListTableViewCell.xib */,
+			);
+			path = ReusableCells;
+			sourceTree = "<group>";
+		};
 		BD9EB1042620063900D28DF6 /* AddEvent */ = {
 			isa = PBXGroup;
 			children = (
@@ -72,6 +85,7 @@
 		BD9EB1052620065600D28DF6 /* EventList */ = {
 			isa = PBXGroup;
 			children = (
+				BD193F6A2622D2FB00FB0FF3 /* ReusableCells */,
 				BD9EB10F262007B400D28DF6 /* ViewModels */,
 				BD9EB10D262007A100D28DF6 /* Coordinators */,
 				BDC18368261FFD6E00CDF13D /* EventListController.swift */,
@@ -253,6 +267,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD193F6E2622D32300FB0FF3 /* EventsListTableViewCell.xib in Resources */,
 				BDCB4B05261FF6930040C363 /* LaunchScreen.storyboard in Resources */,
 				BDCB4B02261FF6930040C363 /* Assets.xcassets in Resources */,
 				BDCB4B00261FF6920040C363 /* Main.storyboard in Resources */,
@@ -266,6 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD193F6D2622D32300FB0FF3 /* EventsListTableViewCell.swift in Sources */,
 				BDC18361261FF98F00CDF13D /* AppCoordinator.swift in Sources */,
 				BDCB4AF9261FF6920040C363 /* AppDelegate.swift in Sources */,
 				BD9EB1072620067400D28DF6 /* AddEventController.swift in Sources */,
