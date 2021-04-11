@@ -20,7 +20,10 @@ class EventsListTableViewCell: UITableViewCell {
     }
     
     private func configure() {
-        eventsImageView.image = viewModel.eventImage
+        viewModel.loadImage { image in
+            self.eventsImageView.image = image
+        }
+        
         eventsNameLabel.text = viewModel.eventTitle
         eventsDateLabel.text = viewModel.eventDate
     }

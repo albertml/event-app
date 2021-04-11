@@ -91,6 +91,7 @@ extension AddEventController {
             return
         }
         viewModel.saveEvent(title: title, date: date, image: image)
+        dismiss(animated: true)
     }
     
 }
