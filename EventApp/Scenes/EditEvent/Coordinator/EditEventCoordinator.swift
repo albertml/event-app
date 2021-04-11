@@ -29,7 +29,7 @@ final class EditEventCoordinator: Coordinator {
         let editEventViewModel = EditEventViewModel(event: event)
         editEventViewModel.addEventCoordinatorResult = handleAddEventCoordinatorResult()
         editEventController.viewModel = editEventViewModel
-        self.navigationController.present(editEventController, animated: true)
+        self.navigationController.pushViewController(editEventController, animated: true)
     }
     
     func showImagePicker() {
