@@ -1,13 +1,13 @@
 //
-//  AddEventController.swift
+//  EditEventController.swift
 //  EventApp
 //
-//  Created by Saski Skye on 4/9/21.
+//  Created by Saski Skye on 4/11/21.
 //
 
 import UIKit
 
-class AddEventController: UIViewController {
+class EditEventController: UIViewController {
     
     @IBOutlet private(set) var dateLabel: UILabel!
     @IBOutlet private(set) var eventImageView: UIImageView!
@@ -56,7 +56,7 @@ class AddEventController: UIViewController {
 
 // MARK: Actions
 
-extension AddEventController {
+extension EditEventController {
     @IBAction
     func onSelectDateTapped(_ sender: Any) {
         showDatePicker()
