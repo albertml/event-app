@@ -40,7 +40,7 @@ final class EditEventCoordinator: Coordinator {
     }
     
     deinit {
-        debugPrint("AddEventCoordinator deallocated")
+        debugPrint("EditEventCoordinator deallocated")
     }
 }
 

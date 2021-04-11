@@ -14,8 +14,6 @@ class AddEventController: UIViewController {
     @IBOutlet private(set) var eventTitleTextField: UITextField!
     
     private var imagePicker = UIImagePickerController()
-    
-    private var selectedImage: UIImage?
     private var selectedDate: Date?
     
     var viewModel: AddEventProtocol!
@@ -78,7 +76,7 @@ extension AddEventController {
     @IBAction
     func onDoneTapped(_ sender: Any) {
         let title = eventTitleTextField.text ?? ""
-        guard let date = selectedDate, let image = selectedImage, !title.isEmpty else {
+        guard let date = selectedDate, let image = viewModel.selectedImage, !title.isEmpty else {
             debugPrint("Event etails not complete")
             return
         }
