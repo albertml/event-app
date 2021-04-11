@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EditEventController: UIViewController {
+class EventDetailController: UIViewController {
     
     @IBOutlet private(set) var dateLabel: UILabel!
     @IBOutlet private(set) var eventImageView: UIImageView!
@@ -18,7 +18,7 @@ class EditEventController: UIViewController {
     private var selectedImage: UIImage?
     private var selectedDate: Date?
     
-    var viewModel: EditEventProtocol!
+    var viewModel: EventDetailProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +51,7 @@ class EditEventController: UIViewController {
 
 // MARK: Actions
 
-extension EditEventController {
+extension EventDetailController {
     @IBAction
     func onSelectDateTapped(_ sender: Any) {
     }

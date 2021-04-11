@@ -82,14 +82,14 @@
 			path = ReusableCells;
 			sourceTree = "<group>";
 		};
-		BD9C96CD26233EC100C2747F /* EditEvent */ = {
+		BD9C96CD26233EC100C2747F /* EventDetail */ = {
 			isa = PBXGroup;
 			children = (
 				BD9C96D52623431F00C2747F /* Coordinator */,
 				BD9C96D126233FEA00C2747F /* ViewModels */,
 				BD9C96CE26233EE300C2747F /* EditEventController.swift */,
 			);
-			path = EditEvent;
+			path = EventDetail;
 			sourceTree = "<group>";
 		};
 		BD9C96D126233FEA00C2747F /* ViewModels */ = {
@@ -198,7 +198,7 @@
 		BDC18367261FFD4500CDF13D /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				BD9C96CD26233EC100C2747F /* EditEvent */,
+				BD9C96CD26233EC100C2747F /* EventDetail */,
 				BD9EB1052620065600D28DF6 /* EventList */,
 				BD9EB1042620063900D28DF6 /* AddEvent */,
 			);

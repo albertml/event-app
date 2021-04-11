@@ -35,7 +35,7 @@ final class EventListCoordinator: Coordinator {
     }
     
     private func presetEditEventCoordinator(event: Event) {
-        let editEventCoordinator = EditEventCoordinator(navigationController: navigationController, event: event)
+        let editEventCoordinator = EventDetailCoordinator(navigationController: navigationController, event: event)
         editEventCoordinator.handleEventListCoordinatorResult = handleEventListCoordinatorResult()
         childCoordinators.append(editEventCoordinator)
         editEventCoordinator.start()

@@ -7,16 +7,16 @@
 
 import UIKit
 
-enum EditEventCoordinatorResult {
+enum EventDetailCoordinatorResult {
     case dismiss
     case imagePicker
 }
 
-final class EditEventCoordinator: Coordinator {
+final class EventDetailCoordinator: Coordinator {
     private(set) var childCoordinators: [Coordinator] = []
     private let navigationController: UINavigationController
     private let event: Event
-    private let editEventController: EditEventController = .instantiate()
+    private let editEventController: EventDetailController = .instantiate()
     
     var handleEventListCoordinatorResult: ((EventListCoordinatorResult) -> ())?
     
@@ -26,7 +26,7 @@ final class EditEventCoordinator: Coordinator {
     }
     
     func start() {
-        let editEventViewModel = EditEventViewModel(event: event)
+        let editEventViewModel = EventDetailViewModel(event: event)
         editEventViewModel.addEventCoordinatorResult = handleAddEventCoordinatorResult()
         editEventController.viewModel = editEventViewModel
         self.navigationController.pushViewController(editEventController, animated: true)
@@ -44,7 +44,7 @@ final class EditEventCoordinator: Coordinator {
     }
 }
 
-extension EditEventCoordinator {
+extension EventDetailCoordinator {
     private func handleAddEventCoordinatorResult() -> ((AddEventCoordinatorResult) -> ()) {
         return { [weak self] result in
             guard let s = self else { return }
@@ -58,7 +58,7 @@ extension EditEventCoordinator {
     }
 }
 
-extension EditEventCoordinator {
+extension EventDetailCoordinator {
     private func handleImagePickerCoordinatorResult() -> ((ImagePickerCoordinatorResult) -> Void) {
         return { [weak self] result in
             guard let s = self else { return }

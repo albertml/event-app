@@ -184,10 +184,10 @@
             </objects>
             <point key="canvasLocation" x="786" y="94"/>
         </scene>
-        <!--Edit Event Controller-->
+        <!--Event Detail Controller-->
         <scene sceneID="7f1-c8-hgF">
             <objects>
-                <viewController storyboardIdentifier="EditEventController" id="9zB-Gc-wW4" customClass="EditEventController" customModule="EventApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EventDetailController" id="9zB-Gc-wW4" customClass="EventDetailController" customModule="EventApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ozr-LJ-xKj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol EditEventProtocol {
+protocol EventDetailProtocol {
     var selectedImage: UIImage? { get set }
     var handleEditEventViewModelResult: ((EditEventViewModelResult) -> ())? { get set }
     
@@ -24,7 +24,7 @@ enum EditEventViewModelResult {
     case eventImage(UIImage)
 }
 
-final class EditEventViewModel: EditEventProtocol {
+final class EventDetailViewModel: EventDetailProtocol {
     
     var addEventCoordinatorResult: ((AddEventCoordinatorResult) -> ())?
     var handleEditEventViewModelResult: ((EditEventViewModelResult) -> ())?
@@ -51,7 +51,7 @@ final class EditEventViewModel: EditEventProtocol {
 
 // MARK: - Methods
 
-extension EditEventViewModel {
+extension EventDetailViewModel {
     func saveEvent(title: String, date: Date, image: UIImage) {
         coreDataManager.saveEvent(name: title, date: date, image: image)
         addEventCoordinatorResult?(.dismiss)
@@ -80,7 +80,7 @@ extension EditEventViewModel {
 
 // MARK: - Getters
 
-private extension EditEventViewModel {
+private extension EventDetailViewModel {
     var eventImage: UIImage {
         guard let imageData = event.image else {
             return UIImage()
