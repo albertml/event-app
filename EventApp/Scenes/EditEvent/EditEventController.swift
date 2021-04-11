@@ -18,16 +18,32 @@ class EditEventController: UIViewController {
     private var selectedImage: UIImage?
     private var selectedDate: Date?
     
-    var viewModel: AddEventProtocol!
+    var viewModel: EditEventProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        viewModel.handleEditEventViewModelResult = handleEditEventViewModelResult()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         viewModel.dismissAddEventScene()
+    }
+    
+    private func handleEditEventViewModelResult() -> ((EditEventViewModelResult) -> ()) {
+        return { [weak self] result in
+            guard let s = self else { return }
+            switch result {
+            case .eventImage(let image):
+                s.eventImageView.image = image
+            case .eventName(let name):
+                s.eventTitleTextField.text = name
+            case .eventDate(let date):
+                s.dateLabel.text = date
+            }
+        }
     }
     
     private func showDatePicker() {

@@ -8,8 +8,8 @@
 import UIKit
 
 protocol EditEventProtocol {
-    
     var selectedImage: UIImage? { get set }
+    var handleEditEventViewModelResult: ((EditEventViewModelResult) -> ())? { get set }
     
     func formattedDate(date: Date) -> String
     func dismissAddEventScene()
@@ -17,10 +17,18 @@ protocol EditEventProtocol {
     func browseImage()
 }
 
+enum EditEventViewModelResult {
+    case eventName(String)
+    case eventDate(String)
+    case eventImage(UIImage)
+}
+
 final class EditEventViewModel: EditEventProtocol {
     
     var addEventCoordinatorResult: ((AddEventCoordinatorResult) -> ())?
+    var handleEditEventViewModelResult: ((EditEventViewModelResult) -> ())?
     var selectedImage: UIImage?
+    private let event: Event
     
     private let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
@@ -30,16 +38,21 @@ final class EditEventViewModel: EditEventProtocol {
     
     private let coreDataManager: CoreDateManager
     
-    init(coreDataManager: CoreDateManager = CoreDateManager()) {
+    init(coreDataManager: CoreDateManager = CoreDateManager(), event: Event) {
         self.coreDataManager = coreDataManager
+        self.event = event
+        
+        handleEditEventViewModelResult?(.eventName(eventTitle))
+        handleEditEventViewModelResult?(.eventDate(eventDate))
+        handleEditEventViewModelResult?(.eventImage(eventImage))
     }
     
     deinit {
-        debugPrint("AddEventViewModel deallocated")
+        debugPrint("EditEventViewModel deallocated")
     }
 }
 
-// MARK: Methods
+// MARK: - Methods
 
 extension EditEventViewModel {
     func saveEvent(title: String, date: Date, image: UIImage) {
@@ -58,5 +71,27 @@ extension EditEventViewModel {
     
     func browseImage() {
         addEventCoordinatorResult?(.imagePicker)
+    }
+}
+
+
+// MARK: - Getters
+
+private extension EditEventViewModel {
+    var eventImage: UIImage {
+        guard let imageData = event.image else {
+            return UIImage()
+        }
+        
+        return UIImage(data: imageData) ?? UIImage()
+    }
+    
+    var eventTitle: String {
+        event.name ?? ""
+    }
+    
+    var eventDate: String {
+        guard let date = event.date else { return "" }
+        return dateFormatter.string(from: date)
     }
 }
