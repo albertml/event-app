@@ -22,15 +22,7 @@ final class CoreDateManager {
         persistentContainer.viewContext
     }
     
-    func saveEvent(name: String, date: Date, image: UIImage) {
-        let event = Event(context: moc)
-        event.setValue(name, forKey: "name")
-        
-        let resizedImage = image.sameAspectRatio(newHeight: 250)
-        let imageData = resizedImage.jpegData(compressionQuality: 0.5)
-        event.setValue(imageData, forKey: "image")
-        event.setValue(date, forKey: "date")
-        
+    func saveObject<E: NSManagedObject>(object: E) {
         do {
             try moc.save()
         } catch {
@@ -38,9 +30,9 @@ final class CoreDateManager {
         }
     }
     
-    func fetchEvents() -> [Event] {
+    func getObjects<E: NSManagedObject>() -> [E] {
         do {
-            let fetchRequest = NSFetchRequest<Event>(entityName: "Event")
+            let fetchRequest = NSFetchRequest<E>(entityName: "\(E.self)")
             let events = try moc.fetch(fetchRequest)
             return events
         } catch {
