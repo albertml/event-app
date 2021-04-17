@@ -25,10 +25,6 @@ class EventListController: UIViewController {
     @objc private func onAddEventTapped() {
         viewModel.showAddEventScene()
     }
-    
-    deinit {
-        debugPrint("EventListController deallocated")
-    }
 }
 
 
