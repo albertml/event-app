@@ -26,10 +26,10 @@ final class CoreDataService: CoreDataServiceProtocol {
         event.setValue(imageData, forKey: "image")
         event.setValue(date, forKey: "date")
         
-        coreDataManager.saveObject(object: event)
+        coreDataManager.save()
     }
     
     func getEvents() -> [Event] {
-        return coreDataManager.getObjects()
+        return coreDataManager.getAll()
     }
 }

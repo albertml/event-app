@@ -22,7 +22,7 @@ final class CoreDateManager {
         persistentContainer.viewContext
     }
     
-    func saveObject<E: NSManagedObject>(object: E) {
+    func save() {
         do {
             try moc.save()
         } catch {
@@ -30,7 +30,7 @@ final class CoreDateManager {
         }
     }
     
-    func getObjects<E: NSManagedObject>() -> [E] {
+    func getAll<E: NSManagedObject>() -> [E] {
         do {
             let fetchRequest = NSFetchRequest<E>(entityName: "\(E.self)")
             let events = try moc.fetch(fetchRequest)
