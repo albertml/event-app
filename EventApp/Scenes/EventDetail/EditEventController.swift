@@ -33,6 +33,10 @@ class EventDetailController: UIViewController {
         viewModel.dismissAddEventScene()
     }
     
+    deinit {
+        debugPrint("EventDetailController deallocated")
+    }
+    
     private func handleEditEventViewModelResult() -> ((EditEventViewModelResult) -> ()) {
         return { [weak self] result in
             guard let s = self else { return }

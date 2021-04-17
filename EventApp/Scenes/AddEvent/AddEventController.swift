@@ -28,6 +28,10 @@ class AddEventController: UIViewController {
         viewModel.dismissAddEventScene()
     }
     
+    deinit {
+        debugPrint("AddEventController deallocated")
+    }
+    
     private func showDatePicker() {
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
