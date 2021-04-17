@@ -33,11 +33,11 @@ final class EventListViewModel: EventListProtocol {
     var eventListCoordinatorResult: ((EventListViewModelCoordinatorResult) -> ())?
     var eventListViewModelResult: ((EventListViewModelResult) -> ())?
     
-    private let coreDataManager: CoreDateManager
+    private let coreDataService: CoreDataService
     var eventsCellViewModel: [EventListCellViewModel] = []
     
-    init(coreDataManager: CoreDateManager = CoreDateManager()) {
-        self.coreDataManager = coreDataManager
+    init(coreDataService: CoreDataService = CoreDataService()) {
+        self.coreDataService = coreDataService
     }
     
     deinit {
@@ -56,11 +56,11 @@ extension EventListViewModel {
 // MARK: CoreData
 extension EventListViewModel {
     func saveEvent(name: String, date: Date, image: UIImage) {
-        coreDataManager.saveEvent(name: name, date: date, image: image)
+        coreDataService.saveEvent(name: name, date: date, image: image)
     }
     
     func fetchEvents() {
-        let eventsCellViewModel = coreDataManager.fetchEvents().compactMap {
+        let eventsCellViewModel = coreDataService.getEvents().compactMap {
             EventListCellViewModel(event: $0)
         }
         

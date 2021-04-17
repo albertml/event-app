@@ -28,10 +28,10 @@ final class AddEventViewModel: AddEventProtocol {
         return dateFormatter
     }()
     
-    private let coreDataManager: CoreDateManager
+    private let coreDataService: CoreDataService
     
-    init(coreDataManager: CoreDateManager = CoreDateManager()) {
-        self.coreDataManager = coreDataManager
+    init(coreDataService: CoreDataService = CoreDataService()) {
+        self.coreDataService = coreDataService
     }
     
     deinit {
@@ -43,8 +43,7 @@ final class AddEventViewModel: AddEventProtocol {
 
 extension AddEventViewModel {
     func saveEvent(title: String, date: Date, image: UIImage) {
-        coreDataManager.saveEvent(name: title, date: date, image: image)
-        debugPrint(CoreDateManager().fetchEvents())
+        coreDataService.saveEvent(name: title, date: date, image: image)
         addEventCoordinatorResult?(.dismiss)
     }
     
